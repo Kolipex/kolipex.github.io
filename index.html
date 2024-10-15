@@ -1,1 +1,72 @@
-<body>test</body>
+<style>
+    *{
+        background: black;
+        font-family: Courier New, monospace;
+        font-size: medium;
+        color: white;
+        padding: 0;
+        border: none;
+        outline: none;
+        resize: none;
+        word-wrap: break-word;
+
+        cursor:default;
+    }
+    #input, output {
+        width: 100%;
+        word-break: break-all;
+    }
+</style>
+<script>
+    const $ = document.querySelector.bind(document);
+
+    const pr = {
+        cls(){
+            $('output').innerText = null;
+        },
+
+        echo(...t){
+            return t.join(' ');
+        },
+
+        help(){
+            return 'Not implemented yet :p';
+        }
+    }
+
+    function run(t){
+        if(!t) return '';
+        t = t.split(' ');
+        const c = t.shift();
+        if(Object.hasOwn(pr,c)) try {
+            return pr[c](...t);
+        } catch (error) {
+            return error;
+        }else return `'${c}' command does not exist (v0.1 dude)`
+    }
+
+    function addLn(t){
+        $('output').innerText += t+'\n';
+    }
+
+    addEventListener('click',()=>$('#in').focus())
+    addEventListener('DOMContentLoaded', ()=>{
+        addLn('TATIS DEV [v0.1]\n');
+        addEventListener('keydown',ev=>{
+            if(ev.key=='Enter'){
+                ev.preventDefault();
+                const t = $('#cmd').innerText;
+                const c = $('#in').innerText;
+                $('#in').innerText = null;
+                
+                addLn(t);
+                const r = run(c);
+                if (r) addLn(r);
+            }})
+    });
+</script>
+<output></output>
+<div id="cmd">
+    <span id="wd">user@host:~$</span>
+    <span id="in" contenteditable tabindex=""></span>
+</div>
