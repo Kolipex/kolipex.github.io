@@ -62,8 +62,8 @@ init(window);
 
 async function pop(p){
     const pip = await window.documentPictureInPicture.requestWindow({width: 100, height: 100});
-    pip.document.head.append(document.querySelector('style'));
+    pip.document.head.innerHTML = '<link href="style.css" rel="stylesheet"></link>';
     pip.document.body.append(p);
     init(pip);
 }
-//addEventListener('click',()=>win(document.body),{once:true});
+document.querySelector('button').addEventListener('click',()=>pop(document.body),{once:true});
