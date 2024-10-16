@@ -1,0 +1,21 @@
+*{ color: #FFF; background: #222 }
+#pre>address{ color: #AAF }
+#pre>nav{ color: #F7F }
+
+body *{
+    display: inline;
+    font: normal medium Courier New, monospace;
+    padding: 0;
+    border: none;
+    outline: none;
+    resize: none;
+    word-break: break-all;
+    cursor: default;
+}
+#input, output {
+    width: 100%;
+}
+
+#pre, #pre *{
+    font-weight: bold;
+}
