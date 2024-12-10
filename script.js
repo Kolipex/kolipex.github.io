@@ -18,11 +18,13 @@ function run(t){
 function init(w){
     const $ = w.document.querySelector.bind(w.document);
     const addLn = (t,html=false) => $('output')[html?'innerHTML':'innerText'] += t+'\n';
-
+    const pr = `TATIS DEV [v${ver}]\n`;
+    const dt = new Date();
+    if (dt.getMonth()==11 && dt.getDate()==10) dt = '🎂 '+dt; //HB to me :P
     try{
         w.addEventListener('click',()=>$('#in').focus());
         w.addEventListener('DOMContentLoaded', ()=>{
-            addLn(`TATIS DEV [v${ver}]\n`);
+            addLn();
             $('#pre').innerHTML = `<address>dev</address>:<nav>/</nav>$`;
         });
         w.addEventListener('keydown',ev=>{
